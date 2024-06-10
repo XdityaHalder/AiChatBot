@@ -1,7 +1,7 @@
 import os, random
 
 from pyrogram import Client, filters
-from pyrogram.types import *
+from pyrogram.types import Message
 from pymongo import MongoClient
 from typing import Union, List, Pattern
 
