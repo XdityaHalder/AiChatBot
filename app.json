@@ -1,0 +1,23 @@
+{
+    "name": "AiChatBot",
+    "description": "An anvanced & powerful user aichatbot for Telegram.",
+    "logo": "https://graph.org/file/292b9dfe74532e7174fd2.png",
+    "keywords": [
+        "user-chat-bot",
+        "telegram-chatbot"
+    ],
+    "repository": "https://github.com/XdityaHalder/AiChatBot",
+    "stack": "container",
+    "env": {},
+    "formation": {
+        "worker": {
+            "quantity": 1,
+            "size": "standard-2x"
+        }
+    },
+    "buildpacks": [
+        {
+            "url": "heroku/python"
+        }
+    ]
+}
