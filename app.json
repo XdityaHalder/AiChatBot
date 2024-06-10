@@ -8,7 +8,28 @@
     ],
     "repository": "https://github.com/XdityaHalder/AiChatBot",
     "stack": "container",
-    "env": {},
+    "env": {
+        "API_ID": {
+            "description": "Enter your api id here.",
+            "value": "",
+            "required": true
+        },
+        "API_HASH": {
+            "description": "Enter your api hash here.",
+            "value": "",
+            "required": true
+        },
+        "STRING_SESSION": {
+            "description": "Enter your pyrogram v2 string session here.",
+            "value": "",
+            "required": true
+        },
+        "MONGO_DB_URL": {
+            "description": "Enter your mongodb url here.",
+            "value": "",
+            "required": true
+        },
+    },
     "formation": {
         "worker": {
             "quantity": 1,
