@@ -1,4 +1,4 @@
-import asyncio, os, random, re, requests
+import os, random
 
 from pyrogram import Client, filters
 from pyrogram.types import *
