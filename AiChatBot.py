@@ -6,13 +6,13 @@ from pymongo import MongoClient
 from typing import Union, List, Pattern
 
 
+if os.path.exists("Internal"):
+    dotenv.load_dotenv("Internal")
+
 API_ID = int(os.getenv("API_ID", 0))
 API_HASH = os.getenv("API_HASH", None)
 STRING_SESSION = os.getenv("STRING_SESSION", None)
 MONGO_DB_URL = os.getenv("MONGO_DB_URL", None)
-
-if os.path.exists("Internal"):
-    dotenv.load_dotenv("Internal")
 
 
 def collect_all_variables():
