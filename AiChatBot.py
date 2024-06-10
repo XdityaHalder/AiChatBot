@@ -1,6 +1,7 @@
 import dotenv, os, random, sys
 
 from pyrogram import Client, filters
+from pyrogram.enums import ChatAction
 from pyrogram.types import Message
 from pymongo import MongoClient
 from typing import Union, List, Pattern
@@ -16,6 +17,12 @@ MONGO_DB_URL = os.getenv("MONGO_DB_URL", None)
 
 
 def collect_all_variables():
+    for file in os.listdir():
+        if file.endswith(".session"):
+            os.remove(file)
+    for file in os.listdir():
+        if file.endswith(".session-journal"):
+            os.remove(file)
     print("𝘾𝙊𝙇𝙇𝙀𝘾𝙏𝙄𝙉𝙂 𝘼𝙇𝙇 𝙑𝘼𝙍𝙄𝘼𝘽𝙇𝙀𝙎 ‼️")
     if API_ID == 0:
         print("'𝘼𝙋𝙄_𝙄𝘿' - 𝙉𝙊𝙏 𝙁𝙊𝙐𝙉𝘿 ‼️") 
@@ -65,7 +72,7 @@ async def text_and_sticker(client: Client, message: Message):
         aditya = adityadb["AdityaDb"]["Aditya"]
         is_aditya = aditya.find_one({"chat_id": message.chat.id})
         if not is_aditya:
-            await client.send_chat_action(message.chat.id, "typing")
+            await client.send_chat_action(message.chat.id, ChatAction.TYPING)
             K = []
             is_chat = chatai.find({"word": message.text})
             k = chatai.find_one({"word": message.text})
@@ -88,7 +95,7 @@ async def text_and_sticker(client: Client, message: Message):
         user_id = getme.id
         if message.reply_to_message.from_user.id == user_id:
             if not is_aditya:
-                await client.send_chat_action(message.chat.id, "typing")
+                await client.send_chat_action(message.chat.id, ChatAction.TYPING)
                 K = []
                 is_chat = chatai.find({"word": message.text})
                 k = chatai.find_one({"word": message.text})
@@ -147,7 +154,7 @@ async def adityastickerai(client: Client, message: Message):
         aditya = adityadb["AdityaDb"]["Aditya"]
         is_aditya = aditya.find_one({"chat_id": message.chat.id})
         if not is_aditya:
-            await client.send_chat_action(message.chat.id, "typing")
+            await client.send_chat_action(message.chat.id, ChatAction.TYPING)
             K = []
             is_chat = chatai.find({"word": message.sticker.file_unique_id})
             k = chatai.find_one({"word": message.text})
@@ -170,7 +177,7 @@ async def adityastickerai(client: Client, message: Message):
         user_id = getme.id
         if message.reply_to_message.from_user.id == user_id:
             if not is_aditya:
-                await client.send_chat_action(message.chat.id, "typing")
+                await client.send_chat_action(message.chat.id, ChatAction.TYPING)
                 K = []
                 is_chat = chatai.find({"word": message.text})
                 k = chatai.find_one({"word": message.text})
@@ -226,7 +233,7 @@ async def adityaprivate(client: Client, message: Message):
     chatdb = MongoClient(MONGO_DB_URL)
     chatai = chatdb["Word"]["WordDb"]
     if not message.reply_to_message:
-        await client.send_chat_action(message.chat.id, "typing")
+        await client.send_chat_action(message.chat.id, ChatAction.TYPING)
         K = []
         is_chat = chatai.find({"word": message.text})
         for x in is_chat:
@@ -242,7 +249,7 @@ async def adityaprivate(client: Client, message: Message):
         getme = await client.get_me()
         user_id = getme.id
         if message.reply_to_message.from_user.id == user_id:
-            await client.send_chat_action(message.chat.id, "typing")
+            await client.send_chat_action(message.chat.id, ChatAction.TYPING)
             K = []
             is_chat = chatai.find({"word": message.text})
             for x in is_chat:
@@ -265,7 +272,7 @@ async def adityaprivatesticker(client: Client, message: Message):
     chatdb = MongoClient(MONGO_DB_URL)
     chatai = chatdb["Word"]["WordDb"]
     if not message.reply_to_message:
-        await client.send_chat_action(message.chat.id, "typing")
+        await client.send_chat_action(message.chat.id, ChatAction.TYPING)
         K = []
         is_chat = chatai.find({"word": message.sticker.file_unique_id})
         for x in is_chat:
@@ -281,7 +288,7 @@ async def adityaprivatesticker(client: Client, message: Message):
         getme = await client.get_me()
         user_id = getme.id
         if message.reply_to_message.from_user.id == user_id:
-            await client.send_chat_action(message.chat.id, "typing")
+            await client.send_chat_action(message.chat.id, ChatAction.TYPING)
             K = []
             is_chat = chatai.find({"word": message.sticker.file_unique_id})
             for x in is_chat:
