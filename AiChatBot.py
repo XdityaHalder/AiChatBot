@@ -1,4 +1,4 @@
-import os, random
+import dotenv, os, random, sys
 
 from pyrogram import Client, filters
 from pyrogram.types import Message
@@ -6,10 +6,32 @@ from pymongo import MongoClient
 from typing import Union, List, Pattern
 
 
-API_ID = os.environ.get("API_ID", 0)
-API_HASH = os.environ.get("API_HASH", None)
-STRING_SESSION = os.environ.get("STRING_SESSION", None)
-MONGO_DB_URL = os.environ.get("MONGO_DB_URL", None)
+API_ID = int(os.getenv("API_ID", 0))
+API_HASH = os.getenv("API_HASH", None)
+STRING_SESSION = os.getenv("STRING_SESSION", None)
+MONGO_DB_URL = os.getenv("MONGO_DB_URL", None)
+
+if os.path.exists("Internal"):
+    dotenv.load_dotenv("Internal")
+
+
+def collect_all_variables():
+    print("𝘾𝙊𝙇𝙇𝙀𝘾𝙏𝙄𝙉𝙂 𝘼𝙇𝙇 𝙑𝘼𝙍𝙄𝘼𝘽𝙇𝙀𝙎 ‼️")
+    if API_ID == 0:
+        print("'𝘼𝙋𝙄_𝙄𝘿' - 𝙉𝙊𝙏 𝙁𝙊𝙐𝙉𝘿 ‼️") 
+        sys.exit()
+    if not API_HASH:
+        print("'𝘼𝙋𝙄_𝙃𝘼𝙎𝙃' - 𝙉𝙊𝙏 𝙁𝙊𝙐𝙉𝘿 ‼️") 
+        sys.exit()
+    if not STRING_SESSION:
+        print("'𝙎𝙏𝙍𝙄𝙉𝙂_𝙎𝙀𝙎𝙎𝙄𝙊𝙉' - 𝙉𝙊𝙏 𝙁𝙊𝙐𝙉𝘿 ‼️") 
+        sys.exit()
+    if not MONGO_DB_URL:
+        print("'𝙈𝙊𝙉𝙂𝙊_𝘿𝘽_𝙐𝙍𝙇' - 𝙉𝙊𝙏 𝙁𝙊𝙐𝙉𝘿 ‼️") 
+        sys.exit()
+    print("𝘼𝙇𝙇 𝙑𝘼𝙍𝙄𝘼𝘽𝙇𝙀𝙎 𝘾𝙊𝙇𝙇𝙀𝘾𝙏𝙀𝘿 ‼️")
+    
+collect_all_variables()
 
 
 client = Client(
