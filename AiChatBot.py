@@ -112,7 +112,8 @@ async def text_and_sticker(client: Client, message: Message):
 
 
 @client.on_message(
-    (filters.sticker | filters.text) & ~filters.private & ~filters.me & ~filters.bot,
+    (filters.sticker | filters.text)
+    & ~filters.private & ~filters.me & ~filters.bot
 )
 async def adityastickerai(client: Client, message: Message):
 
@@ -195,7 +196,8 @@ async def adityastickerai(client: Client, message: Message):
 
 
 @client.on_message(
-    (filters.text | filters.sticker) & filters.private & ~filters.me & ~filters.bot,
+    (filters.text | filters.sticker)
+    & filters.private & ~filters.me & ~filters.bot
 )
 async def adityaprivate(client: Client, message: Message):
 
@@ -233,7 +235,8 @@ async def adityaprivate(client: Client, message: Message):
 
 
 @client.on_message(
-    (filters.sticker | filters.text) & filters.private & ~filters.me & ~filters.bot,
+    (filters.sticker | filters.text)
+    & filters.private & ~filters.me & ~filters.bot
 )
 async def adityaprivatesticker(client: Client, message: Message):
 
