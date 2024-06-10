@@ -38,7 +38,7 @@ client = Client(
     name="AiChatBot",
     api_id=API_ID,
     api_hash=API_HASH,
-    session_name=STRING_SESSION,
+    session_string=STRING_SESSION,
 )
 
 # custom command filters
