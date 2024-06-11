@@ -28,7 +28,7 @@
             "description": "Enter your mongodb url here.",
             "value": "",
             "required": true
-        },
+        }
     },
     "formation": {
         "worker": {
